@@ -2,13 +2,22 @@
 
 
 
-console.log("hello");
+
 
 window.addEventListener("load", function() {
     
-    let forms = this.document.querySelectorAll('.formField');
-    //console.log(forms[0].innerHTML);
-    formSubmission(this.document, forms, forms[0], forms[1], forms[2], forms[3]);
+    let forms = document.querySelector('form');
+  
+    forms.addEventListener("submit", function(event) {
+        let pilot = document.querySelector("input[name=pilotName]").value;
+        let copilot = document.querySelector("input[name=copilotName]").value;
+        let fuelLevel = document.querySelector("input[name=fuelLevel]").value;
+        let cargoMass = document.querySelector("input[name=cargoMass]").value;
+        let faultyItems = document.querySelector('.faultyItems');
+        formSubmission(document, faultyItems, pilot, copilot, fuelLevel, cargoMass);
+    });
+    
+
 
    let listedPlanets;
    // Set listedPlanetsResponse equal to the value returned by calling myFetch()
